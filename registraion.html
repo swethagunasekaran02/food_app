@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section>
+        <h3>Registration</h3>
+    <div class="form-group">
+    <label for="">Enter Your Username:</label><br>
+    <input type="text" id="uname"required>
+    <span id="uerror"></span>
+    </div>
+    <div class="form-group">
+    <label for="">Enter Your email:</label><br>
+    <input type="email" id="email"required>
+    <span id="emerror"></span>
+    </div>
+    <div class="form-group">
+    <label for="">Enter Your Password:</label><br>
+    <input type="password" id="pname"required>
+    <span id="perror"></span>
+    </div>
+    <div class="form-group">
+    <label for="">Enter Your confirm Password:</label><br>
+    <input type="password" id="cpname"required>
+    <span id="cperror"></span>
+    </div>
+    <div class="form-group">
+        <button type="submit" id="sumbtn">submit</button>
+    </div><br>
+    <div>
+        <h4>Don't have an account? <a href="login.html"><strong>Login</strong></a></h4>
+    </div>
+    </section>
+     <script>
+
+    let RegisterForm = document.querySelector("#sumbtn")
+let customer;
+
+let alreadysaved = JSON.parse(localStorage.getItem("customer_info"))
+if (alreadysaved && alreadysaved.length >= 1) {
+    customer = alreadysaved
+} else {
+    customer = []
+}
+
+RegisterForm.addEventListener("click", () => {
+    // alert("hii")
+
+    let username = document.querySelector("#uname").value;
+    let Email_Add = document.querySelector("#email").value;
+    let Pass = document.querySelector("#pname").value;
+    let C_Pass = document.querySelector("#cpname").value;
+
+
+    if (username && Email_Add && Pass && C_Pass) {
+
+        let info = {
+            username,
+            Email_Add,
+            Pass,
+            C_Pass
+
+        }
+        customer.push(info)
+
+
+        localStorage.setItem("customer_info", JSON.stringify(customer))
+        alert("register successfully...")
+        RegisterForm.reset()
+        
+
+
+    } else {
+        alert("Please fill the details")
+    }
+})
+
+
+</script>    
+</body>
+</html>
