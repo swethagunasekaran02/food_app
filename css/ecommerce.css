@@ -21,7 +21,7 @@
 
 
 .bg-image {
-  background-image: url('../image/Bar-home-img-1.jpg');
+  background-image: url('image/Bar-home-img-1.jpg');
 
 
   background-size: cover;
